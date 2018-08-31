@@ -1,0 +1,422 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		1D22AB1921317791003674C2 /* MTYAnimatableLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D22AB1821317791003674C2 /* MTYAnimatableLabel.m */; };
+		1D314567211F4F9D007946D1 /* UIView+MTYExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D314566211F4F9D007946D1 /* UIView+MTYExtension.m */; };
+		1D3622712129B3FB0018910B /* MTYAnimatedView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D3622702129B3FB0018910B /* MTYAnimatedView.m */; };
+		1D644A812138391A00EF7A56 /* MTYXibViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D644A7F2138391A00EF7A56 /* MTYXibViewController.m */; };
+		1D644A822138391A00EF7A56 /* MTYXibViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D644A802138391A00EF7A56 /* MTYXibViewController.xib */; };
+		1DA3815520FD06B300E2598B /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3815420FD06B300E2598B /* AppDelegate.m */; };
+		1DA3815D20FD06B400E2598B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1DA3815C20FD06B400E2598B /* Assets.xcassets */; };
+		1DA3816020FD06B400E2598B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1DA3815E20FD06B400E2598B /* LaunchScreen.storyboard */; };
+		1DA3816320FD06B400E2598B /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3816220FD06B400E2598B /* main.m */; };
+		1DA3816B20FD071200E2598B /* MTYViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3816A20FD071200E2598B /* MTYViewController.m */; };
+		1DA3816F20FD076900E2598B /* MTYWeakProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3816E20FD076900E2598B /* MTYWeakProxy.m */; };
+		1DA3817220FD080D00E2598B /* MTYPageMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DA3817120FD080D00E2598B /* MTYPageMenu.m */; };
+		1DDC209E211B365C001880AF /* MTYScrollView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC209D211B365C001880AF /* MTYScrollView.m */; };
+		1DDC20A1211B406D001880AF /* MTYMenuView.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC20A0211B406D001880AF /* MTYMenuView.m */; };
+		1DDC20A4211B4175001880AF /* MTYMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC20A3211B4175001880AF /* MTYMenuItem.m */; };
+		1DDC20A7211B48BB001880AF /* MTYPageMenuOption.m in Sources */ = {isa = PBXBuildFile; fileRef = 1DDC20A6211B48BB001880AF /* MTYPageMenuOption.m */; };
+		3103FDCB2123CEB100CA3E9D /* MTYPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3103FDCA2123CEB100CA3E9D /* MTYPageViewController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		1D22AB1721317791003674C2 /* MTYAnimatableLabel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYAnimatableLabel.h; sourceTree = "<group>"; };
+		1D22AB1821317791003674C2 /* MTYAnimatableLabel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYAnimatableLabel.m; sourceTree = "<group>"; };
+		1D314565211F4F9D007946D1 /* UIView+MTYExtension.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIView+MTYExtension.h"; sourceTree = "<group>"; };
+		1D314566211F4F9D007946D1 /* UIView+MTYExtension.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIView+MTYExtension.m"; sourceTree = "<group>"; };
+		1D36226F2129B3FB0018910B /* MTYAnimatedView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYAnimatedView.h; sourceTree = "<group>"; };
+		1D3622702129B3FB0018910B /* MTYAnimatedView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYAnimatedView.m; sourceTree = "<group>"; };
+		1D644A7E2138391A00EF7A56 /* MTYXibViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYXibViewController.h; sourceTree = "<group>"; };
+		1D644A7F2138391A00EF7A56 /* MTYXibViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYXibViewController.m; sourceTree = "<group>"; };
+		1D644A802138391A00EF7A56 /* MTYXibViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MTYXibViewController.xib; sourceTree = "<group>"; };
+		1DA3815020FD06B300E2598B /* MTYPageMenuDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MTYPageMenuDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		1DA3815320FD06B300E2598B /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		1DA3815420FD06B300E2598B /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		1DA3815C20FD06B400E2598B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		1DA3815F20FD06B400E2598B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		1DA3816120FD06B400E2598B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1DA3816220FD06B400E2598B /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		1DA3816920FD071200E2598B /* MTYViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYViewController.h; sourceTree = "<group>"; };
+		1DA3816A20FD071200E2598B /* MTYViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYViewController.m; sourceTree = "<group>"; };
+		1DA3816D20FD076900E2598B /* MTYWeakProxy.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYWeakProxy.h; sourceTree = "<group>"; };
+		1DA3816E20FD076900E2598B /* MTYWeakProxy.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYWeakProxy.m; sourceTree = "<group>"; };
+		1DA3817020FD080D00E2598B /* MTYPageMenu.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYPageMenu.h; sourceTree = "<group>"; };
+		1DA3817120FD080D00E2598B /* MTYPageMenu.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYPageMenu.m; sourceTree = "<group>"; };
+		1DDC209C211B365C001880AF /* MTYScrollView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYScrollView.h; sourceTree = "<group>"; };
+		1DDC209D211B365C001880AF /* MTYScrollView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYScrollView.m; sourceTree = "<group>"; };
+		1DDC209F211B406D001880AF /* MTYMenuView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYMenuView.h; sourceTree = "<group>"; };
+		1DDC20A0211B406D001880AF /* MTYMenuView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYMenuView.m; sourceTree = "<group>"; };
+		1DDC20A2211B4175001880AF /* MTYMenuItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYMenuItem.h; sourceTree = "<group>"; };
+		1DDC20A3211B4175001880AF /* MTYMenuItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYMenuItem.m; sourceTree = "<group>"; };
+		1DDC20A5211B48BB001880AF /* MTYPageMenuOption.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYPageMenuOption.h; sourceTree = "<group>"; };
+		1DDC20A6211B48BB001880AF /* MTYPageMenuOption.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYPageMenuOption.m; sourceTree = "<group>"; };
+		3103FDC92123CEB100CA3E9D /* MTYPageViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MTYPageViewController.h; sourceTree = "<group>"; };
+		3103FDCA2123CEB100CA3E9D /* MTYPageViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MTYPageViewController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		1DA3814D20FD06B300E2598B /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		1D314564211F4EB0007946D1 /* MTYUtils */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3816D20FD076900E2598B /* MTYWeakProxy.h */,
+				1DA3816E20FD076900E2598B /* MTYWeakProxy.m */,
+				1D22AB1721317791003674C2 /* MTYAnimatableLabel.h */,
+				1D22AB1821317791003674C2 /* MTYAnimatableLabel.m */,
+				1D314565211F4F9D007946D1 /* UIView+MTYExtension.h */,
+				1D314566211F4F9D007946D1 /* UIView+MTYExtension.m */,
+			);
+			path = MTYUtils;
+			sourceTree = "<group>";
+		};
+		1DA3814720FD06B300E2598B = {
+			isa = PBXGroup;
+			children = (
+				1DA3816C20FD074700E2598B /* MTYPageMenu */,
+				1DA3815220FD06B300E2598B /* MTYPageMenuDemo */,
+				1DA3815120FD06B300E2598B /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		1DA3815120FD06B300E2598B /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3815020FD06B300E2598B /* MTYPageMenuDemo.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		1DA3815220FD06B300E2598B /* MTYPageMenuDemo */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3815320FD06B300E2598B /* AppDelegate.h */,
+				1DA3815420FD06B300E2598B /* AppDelegate.m */,
+				1DA3816920FD071200E2598B /* MTYViewController.h */,
+				1DA3816A20FD071200E2598B /* MTYViewController.m */,
+				1D644A7E2138391A00EF7A56 /* MTYXibViewController.h */,
+				1D644A7F2138391A00EF7A56 /* MTYXibViewController.m */,
+				1D644A802138391A00EF7A56 /* MTYXibViewController.xib */,
+				3103FDC92123CEB100CA3E9D /* MTYPageViewController.h */,
+				3103FDCA2123CEB100CA3E9D /* MTYPageViewController.m */,
+				1DA3815C20FD06B400E2598B /* Assets.xcassets */,
+				1DA3815E20FD06B400E2598B /* LaunchScreen.storyboard */,
+				1DA3816120FD06B400E2598B /* Info.plist */,
+				1DA3816220FD06B400E2598B /* main.m */,
+			);
+			path = MTYPageMenuDemo;
+			sourceTree = "<group>";
+		};
+		1DA3816C20FD074700E2598B /* MTYPageMenu */ = {
+			isa = PBXGroup;
+			children = (
+				1DA3817020FD080D00E2598B /* MTYPageMenu.h */,
+				1DA3817120FD080D00E2598B /* MTYPageMenu.m */,
+				1DDC209C211B365C001880AF /* MTYScrollView.h */,
+				1DDC209D211B365C001880AF /* MTYScrollView.m */,
+				1DDC209F211B406D001880AF /* MTYMenuView.h */,
+				1DDC20A0211B406D001880AF /* MTYMenuView.m */,
+				1DDC20A2211B4175001880AF /* MTYMenuItem.h */,
+				1DDC20A3211B4175001880AF /* MTYMenuItem.m */,
+				1D36226F2129B3FB0018910B /* MTYAnimatedView.h */,
+				1D3622702129B3FB0018910B /* MTYAnimatedView.m */,
+				1DDC20A5211B48BB001880AF /* MTYPageMenuOption.h */,
+				1DDC20A6211B48BB001880AF /* MTYPageMenuOption.m */,
+				1D314564211F4EB0007946D1 /* MTYUtils */,
+			);
+			name = MTYPageMenu;
+			path = ../MTYPageMenu;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		1DA3814F20FD06B300E2598B /* MTYPageMenuDemo */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DA3816620FD06B400E2598B /* Build configuration list for PBXNativeTarget "MTYPageMenuDemo" */;
+			buildPhases = (
+				1DA3814C20FD06B300E2598B /* Sources */,
+				1DA3814D20FD06B300E2598B /* Frameworks */,
+				1DA3814E20FD06B300E2598B /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MTYPageMenuDemo;
+			productName = MTYPageMenuDemo;
+			productReference = 1DA3815020FD06B300E2598B /* MTYPageMenuDemo.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		1DA3814820FD06B300E2598B /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = MTY;
+				LastUpgradeCheck = 0940;
+				ORGANIZATIONNAME = menttofly;
+				TargetAttributes = {
+					1DA3814F20FD06B300E2598B = {
+						CreatedOnToolsVersion = 9.4.1;
+					};
+				};
+			};
+			buildConfigurationList = 1DA3814B20FD06B300E2598B /* Build configuration list for PBXProject "MTYPageMenuDemo" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 1DA3814720FD06B300E2598B;
+			productRefGroup = 1DA3815120FD06B300E2598B /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				1DA3814F20FD06B300E2598B /* MTYPageMenuDemo */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		1DA3814E20FD06B300E2598B /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D644A822138391A00EF7A56 /* MTYXibViewController.xib in Resources */,
+				1DA3816020FD06B400E2598B /* LaunchScreen.storyboard in Resources */,
+				1DA3815D20FD06B400E2598B /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		1DA3814C20FD06B300E2598B /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1D3622712129B3FB0018910B /* MTYAnimatedView.m in Sources */,
+				1D22AB1921317791003674C2 /* MTYAnimatableLabel.m in Sources */,
+				3103FDCB2123CEB100CA3E9D /* MTYPageViewController.m in Sources */,
+				1D644A812138391A00EF7A56 /* MTYXibViewController.m in Sources */,
+				1DDC20A4211B4175001880AF /* MTYMenuItem.m in Sources */,
+				1D314567211F4F9D007946D1 /* UIView+MTYExtension.m in Sources */,
+				1DDC209E211B365C001880AF /* MTYScrollView.m in Sources */,
+				1DA3817220FD080D00E2598B /* MTYPageMenu.m in Sources */,
+				1DA3816320FD06B400E2598B /* main.m in Sources */,
+				1DA3816F20FD076900E2598B /* MTYWeakProxy.m in Sources */,
+				1DDC20A1211B406D001880AF /* MTYMenuView.m in Sources */,
+				1DA3816B20FD071200E2598B /* MTYViewController.m in Sources */,
+				1DDC20A7211B48BB001880AF /* MTYPageMenuOption.m in Sources */,
+				1DA3815520FD06B300E2598B /* AppDelegate.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		1DA3815E20FD06B400E2598B /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1DA3815F20FD06B400E2598B /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		1DA3816420FD06B400E2598B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		1DA3816520FD06B400E2598B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.4;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		1DA3816720FD06B400E2598B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KA357DNG3T;
+				INFOPLIST_FILE = MTYPageMenuDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.menttofly.MTYPageMenuDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		1DA3816820FD06B400E2598B /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = KA357DNG3T;
+				INFOPLIST_FILE = MTYPageMenuDemo/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.menttofly.MTYPageMenuDemo;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DA3814B20FD06B300E2598B /* Build configuration list for PBXProject "MTYPageMenuDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DA3816420FD06B400E2598B /* Debug */,
+				1DA3816520FD06B400E2598B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DA3816620FD06B400E2598B /* Build configuration list for PBXNativeTarget "MTYPageMenuDemo" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DA3816720FD06B400E2598B /* Debug */,
+				1DA3816820FD06B400E2598B /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 1DA3814820FD06B300E2598B /* Project object */;
+}
