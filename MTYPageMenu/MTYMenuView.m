@@ -69,6 +69,7 @@
     if (@available(iOS 11.0, *)) scrollView.contentInsetAdjustmentBehavior = UIScrollViewContentInsetAdjustmentNever;
     scrollView.showsHorizontalScrollIndicator = NO;
     scrollView.showsVerticalScrollIndicator = NO;
+    scrollView.contentInset = _option.contentInset;
     scrollView.scrollsToTop = NO;
     scrollView.bounces = YES;
     [self addSubview:scrollView];
@@ -281,6 +282,7 @@
         _animatedView.animatedColor = option.animatedColor;
         _animatedView.tranferRate = option.tranferRate;
     }
+    _scrollView.contentInset = option.contentInset;
     
     /// Reset menu item with new option.
     if (!_menuItems || !_menuItems.count) return;

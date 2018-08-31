@@ -28,13 +28,13 @@
     _tranferRate = 10;
     
     _titleFont = [UIFont systemFontOfSize:15];
-    _titleColor = UIColor.redColor;
-    _selectedTitleFont = [UIFont fontWithName:@"TimesNewRomanPS-BoldItalicMT" size:19];
-    _selectedTitleColor = UIColor.blueColor;
+    _titleColor = UIColor.grayColor;
+    _selectedTitleFont = [UIFont boldSystemFontOfSize:16];
+    _selectedTitleColor = UIColor.darkGrayColor;
     
     _animatedHeight = 2;
     _animatedBottomSpace = 0;
-    _animatedColor = UIColor.yellowColor;
+    _animatedColor = UIColor.orangeColor;
     _animatedWidth = 0;
     _animatedCornerRadius = 0;
     
