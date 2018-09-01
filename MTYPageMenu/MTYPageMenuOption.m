@@ -34,9 +34,12 @@
     
     _animatedHeight = 2;
     _animatedBottomSpace = 0;
-    _animatedColor = UIColor.orangeColor;
-    _animatedWidth = 0;
-    _animatedCornerRadius = 0;
+    _timingFunction = kCAMediaTimingFunctionDefault;
+    
+    _trackColor = UIColor.orangeColor;
+    _trackWidth = 0;
+    _trackCornerRadius = 0;
+    _contentsGravity = kCAGravityResize;
     
     _itemWidth = 35;
     _itemMargin = 0;
@@ -49,7 +52,15 @@
 }
 
 - (UIFont *)selectedTitleFont {
-    return _selectedTitleFont ?: [UIFont systemFontOfSize:16];
+    return _selectedTitleFont ?: [UIFont boldSystemFontOfSize:16];
+}
+
+- (NSString *)timingFunction {
+    return _timingFunction ?: kCAMediaTimingFunctionDefault;
+}
+
+- (NSString *)contentsGravity {
+    return _contentsGravity ?: kCAGravityResize;
 }
 
 @end

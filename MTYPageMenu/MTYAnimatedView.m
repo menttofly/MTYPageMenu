@@ -47,9 +47,20 @@
     CGFloat rate = _progress - index;
     NSInteger nextIndex = index < _keyFrames.count - 1 ? index + 1 : index;
     
-    /// Key frame convert to path.
+    /// Convert key frames to path.
     NSArray *keyFrames = @[_keyFrames[index], _keyFrames[nextIndex]];
-    _shapeLayer.path = [self _keyPathWithKeyFrames:keyFrames rate:rate].CGPath;
+    UIBezierPath *keyPath = [self _keyPathWithKeyFrames:keyFrames rate:rate];
+    
+    if (!_trackImage) {
+        /// Draw and render layer by bezier path.
+        _shapeLayer.path = keyPath.CGPath;
+    } else {
+        /// Layer using image as its contents.
+        [CATransaction begin];
+        [CATransaction setDisableActions:YES];
+        _shapeLayer.frame = keyPath.bounds;
+        [CATransaction commit];
+    }
 }
 
 - (UIBezierPath *)_keyPathWithKeyFrames:(NSArray<NSValue *> *)tuple rate:(CGFloat)rate{
@@ -83,7 +94,8 @@
             atWidth = distance - (distance - nextWidth) * sRate;
         }
     }
-    UIBezierPath *keyPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(startX, 0, atWidth, self.mty_height) cornerRadius:_animatedCornerRadius];
+    UIBezierPath *keyPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(startX, 0, atWidth, self.mty_height) cornerRadius:_trackCornerRadius];
+    
     return keyPath;
 }
 
@@ -100,9 +112,24 @@
     [self _setNeedsDisplay];
 }
 
-- (void)setAnimatedColor:(UIColor *)animatedColor {
-    _animatedColor = animatedColor;
-    _shapeLayer.fillColor = animatedColor.CGColor;
+- (void)setTrackColor:(UIColor *)trackColor {
+    _trackColor = trackColor;
+    _shapeLayer.fillColor = trackColor.CGColor;
+}
+
+- (void)setTrackImage:(UIImage *)trackImage {
+    _trackImage = trackImage;
+    _shapeLayer.contents = (__bridge id)trackImage.CGImage;
+    if (trackImage) {
+         _shapeLayer.path = NULL;
+    } else {
+         _shapeLayer.frame = CGRectZero;
+    }
+}
+
+- (void)setContentsGravity:(NSString *)contentsGravity {
+    _contentsGravity = [contentsGravity copy];
+    _shapeLayer.contentsGravity = contentsGravity;
 }
 
 - (NSInteger)tranferRate {
@@ -112,7 +139,7 @@
 - (CAKeyframeAnimation *)pathAnimation {
     if (!_pathAnimation) {
         CAKeyframeAnimation *pathAnimation = [CAKeyframeAnimation animationWithKeyPath:@"path"];
-        pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:kCAMediaTimingFunctionEaseIn];
+        pathAnimation.timingFunction = [CAMediaTimingFunction functionWithName:_timingFunction];
         pathAnimation.duration = self.tranferRate / 60.f;
         pathAnimation.fillMode = kCAFillModeRemoved;
         pathAnimation.removedOnCompletion = YES;
@@ -129,23 +156,30 @@
     CGRect nextFrame = _keyFrames[index].CGRectValue;
     CGFloat nextX = nextFrame.origin.x;
     CGFloat nextWidth = nextFrame.size.width;
-    UIBezierPath *toPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(nextX, 0, nextWidth, self.mty_height) cornerRadius:_animatedCornerRadius];
+    UIBezierPath *toPath = [UIBezierPath bezierPathWithRoundedRect:CGRectMake(nextX, 0, nextWidth, self.mty_height) cornerRadius:_trackCornerRadius];
 
-    CAKeyframeAnimation *pathAnimation = self.pathAnimation;
-    /// Determine the appropriate path to animate.
-    if (labs(index-_index) > 1 || !_springEffectEnabled) {
-        pathAnimation.values = @[(__bridge id)_shapeLayer.path, (__bridge id)toPath.CGPath];
+    if (_trackImage) {
+        [CATransaction begin];
+        [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:_timingFunction]];
+        _shapeLayer.frame = toPath.bounds;
+        [CATransaction commit];
     } else {
-        NSInteger start = index < _index ? index : _index;
-        NSInteger end = index < _index ? _index :  index;
-        NSArray<NSValue *> *keyFrames = @[_keyFrames[start], _keyFrames[end]];
-        
-        UIBezierPath *springPath = [self _keyPathWithKeyFrames:keyFrames rate:0.5];
-        pathAnimation.values = @[(__bridge id)_shapeLayer.path, (__bridge id)springPath.CGPath , (__bridge id)toPath.CGPath];
+        CAKeyframeAnimation *pathAnimation = self.pathAnimation;
+        /// Determine the appropriate path to animate.
+        if (labs(index-_index) > 1 || !_springEffectEnabled) {
+            pathAnimation.values = @[(__bridge id)_shapeLayer.path, (__bridge id)toPath.CGPath];
+        } else {
+            NSInteger start = index < _index ? index : _index;
+            NSInteger end = index < _index ? _index :  index;
+            NSArray<NSValue *> *keyFrames = @[_keyFrames[start], _keyFrames[end]];
+            
+            UIBezierPath *springPath = [self _keyPathWithKeyFrames:keyFrames rate:0.5];
+            pathAnimation.values = @[(__bridge id)_shapeLayer.path, (__bridge id)springPath.CGPath , (__bridge id)toPath.CGPath];
+        }
+        [_shapeLayer addAnimation:pathAnimation forKey:nil];  /// Animation will copied by the render tree.
+        // When Core Animation running, the origin layer will auto hidden until animation complete.
+        _shapeLayer.path = toPath.CGPath;
     }
-    [_shapeLayer addAnimation:pathAnimation forKey:nil];  /// Animation will copied by the render tree.
-    /// When Core Animation running, the origin layer will auto hidden until animation complete.
-    _shapeLayer.path = toPath.CGPath;
     _index = index;
 }
 

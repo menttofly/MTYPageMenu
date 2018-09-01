@@ -22,13 +22,14 @@
     self.view.backgroundColor = UIColor.whiteColor;
     MTYPageMenuOption *option = MTYPageMenuOption.new;
     option.widthEqualAdaptiveItem = YES;
+    option.trackImage = [UIImage imageNamed:@"track_background"];
     //    option.showAnimatedView = NO;
     //    option.showMenuView = NO;
-    option.animatedCornerRadius = 35.f / 2;
+    option.trackCornerRadius = 35.f / 2;
     option.animatedBottomSpace = 4.5;
     option.animatedHeight = 35;
     option.itemMargin = 10;
-    option.extraWidth = 15;
+    option.extraWidth = 25;
     self.menuOption = option;
     self.startIndex = 3;
     self.dataSource = self;
@@ -40,7 +41,8 @@
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
         self.menuOption.extraWidth = 30;
-        self.menuOption.animatedColor = UIColor.orangeColor;
+        self.menuOption.trackImage = nil;
+        self.menuOption.trackColor = UIColor.orangeColor;
         [self resetOption:self.menuOption];
         self.startIndex = 2;
         [self reloadData];

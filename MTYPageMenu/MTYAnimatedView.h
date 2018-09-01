@@ -18,9 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nonatomic) CGFloat progress;  ///< Animated view tranfer progress.
 @property (nonatomic) NSInteger tranferRate;  ///< Transfer rate of update progress.
 @property (nonatomic) BOOL springEffectEnabled;  ///< Whether enable awesome effect or not.
+@property (nonatomic, copy) NSString *timingFunction;  ///< Time fuction of the animated part, default is kCAMediaTimingFunctionDefault.
+@property (nonatomic, copy) NSString *contentsGravity;  ///< Content mode for track image view, default is 'kCAGravityResize'.
 
-@property (nonatomic) UIColor *animatedColor;  ///< Color of the animated part.
-@property (nonatomic) CGFloat animatedCornerRadius;  ///< Corner radius of the animated part.
+@property (nonatomic) UIColor *trackColor;  ///< Fill color of the track view.
+@property (nonatomic) CGFloat trackCornerRadius;  ///< Corner radius of the track view.
+@property (nullable, nonatomic) UIImage *trackImage;  ///< Animated image of the track view, this will cover 'trackColor' attribute.
 @property (nullable, nonatomic, copy) NSArray<NSValue *> *keyFrames;  ///< Animated view key frames.
 
 - (void)animatedWithIndex:(NSInteger)index;

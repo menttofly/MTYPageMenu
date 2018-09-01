@@ -22,7 +22,7 @@
     MTYPageMenuOption *option = MTYPageMenuOption.new;
     option.widthEqualAdaptiveItem = YES;
     option.animatedHeight = 2;
-    option.animatedColor = UIColor.orangeColor;
+    option.trackColor = UIColor.orangeColor;
     option.itemMargin = 10;
     option.extraWidth = 10;
     self.menuOption = option;

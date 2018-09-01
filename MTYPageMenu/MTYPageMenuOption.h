@@ -28,9 +28,13 @@ NS_ASSUME_NONNULL_BEGIN
 
 @property (nonatomic) CGFloat animatedHeight;  ///< Animated view height.
 @property (nonatomic) CGFloat animatedBottomSpace;  ///< Animated view bottom space to menu view.
-@property (nonatomic) UIColor *animatedColor;  ///< Progress color of the animate view.
-@property (nonatomic) CGFloat animatedWidth;  ///< Progress width of the animate view.
-@property (nonatomic) CGFloat animatedCornerRadius;  ///< Corner radius of the progress.
+@property (nullable, nonatomic, copy) NSString *timingFunction;  ///< Time fuction of the animated part, default is kCAMediaTimingFunctionDefault.
+
+@property (nonatomic) UIColor *trackColor;  ///< Fill color of the track view.
+@property (nonatomic) CGFloat trackWidth;  ///< Width of the track view.
+@property (nonatomic) CGFloat trackCornerRadius;  ///< Corner radius of the track view.
+@property (nullable, nonatomic) UIImage *trackImage;  ///< Animated image of the track view, this will cover 'trackColor' and other attribute.
+@property (nullable, nonatomic, copy) NSString *contentsGravity;  ///< Content mode for track image view, default is 'kCAGravityResize'.
 
 @property (nonatomic) CGFloat itemWidth;  ///< Menu item width.
 @property (nonatomic) CGFloat itemMargin;  ///< Margin between menu item.

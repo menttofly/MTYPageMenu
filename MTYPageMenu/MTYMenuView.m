@@ -80,14 +80,10 @@
 }
 
 - (void)_setupAnimatedView {
-    MTYAnimatedView *animatedView = [[MTYAnimatedView alloc] initWithFrame:CGRectZero];
-    animatedView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
-    animatedView.animatedCornerRadius = _option.animatedCornerRadius;
-    animatedView.springEffectEnabled = _option.springEffectEnabled;
-    animatedView.animatedColor = _option.animatedColor;
-    animatedView.tranferRate = _option.tranferRate;
-    [_scrollView insertSubview:animatedView atIndex:0];
-    self.animatedView = animatedView;
+    self.animatedView = [[MTYAnimatedView alloc] initWithFrame:CGRectZero];
+    _animatedView.autoresizingMask = UIViewAutoresizingFlexibleTopMargin;
+    [self _configureAnimatedView:_option];
+    [_scrollView insertSubview:_animatedView atIndex:0];
 }
 
 - (void)_removeAllItems {
@@ -109,11 +105,7 @@
         item.text = title;
         item.textColor = _option.titleColor;
         item.delegate = self;
-        item.titleFont = _option.titleFont;
-        item.titleColor = _option.titleColor;
-        item.tranferRate = _option.tranferRate;
-        item.selectedTitleFont = _option.selectedTitleFont;
-        item.selectedTitleColor = _option.selectedTitleColor;
+        [self _configureItem:item with:_option];
         if (_startIndex == index) {
             [item setSelected:YES animated:NO];
             _selectedIndex = index;
@@ -128,6 +120,24 @@
         MTYMenuItem *item = self.menuItems[_selectedIndex];
         [item setSelected:YES animated:NO];
     }
+}
+
+- (void)_configureAnimatedView:(MTYPageMenuOption *)option {
+    _animatedView.trackColor = option.trackColor;
+    _animatedView.trackImage = option.trackImage;
+    _animatedView.tranferRate = option.tranferRate;
+    _animatedView.timingFunction = option.timingFunction;
+    _animatedView.contentsGravity = option.contentsGravity;
+    _animatedView.trackCornerRadius = option.trackCornerRadius;
+    _animatedView.springEffectEnabled = option.springEffectEnabled;
+}
+
+- (void)_configureItem:(MTYMenuItem *)item with:(MTYPageMenuOption *)option {
+    item.titleFont = option.titleFont;
+    item.titleColor = option.titleColor;
+    item.tranferRate = option.tranferRate;
+    item.selectedTitleFont = option.selectedTitleFont;
+    item.selectedTitleColor = option.selectedTitleColor;
 }
 
 #pragma mark - Layout
@@ -212,10 +222,10 @@
         CGRect itemFrame = value.CGRectValue;
         CGFloat x, width;
         
-        /// Depending on whether the 'animatedWidth' is defined.
-        if (_option.animatedWidth) {
-            x = CGRectGetMidX(itemFrame) - _option.animatedWidth / 2;
-            width = _option.animatedWidth;
+        /// Depending on whether the 'trackWidth' is defined.
+        if (_option.trackWidth) {
+            x = CGRectGetMidX(itemFrame) - _option.trackWidth / 2;
+            width = _option.trackWidth;
         } else {
             CGFloat extraWidth = _option.widthEqualAdaptiveItem ? 0 : _option.extraWidth;
             x = _option.adaptiveWidth ? (itemFrame.origin.x + extraWidth / 2) : itemFrame.origin.x;
@@ -277,21 +287,14 @@
         [_animatedView removeFromSuperview];
         _animatedView = nil;
     } else {
-        _animatedView.animatedCornerRadius = option.animatedCornerRadius;
-        _animatedView.springEffectEnabled = option.springEffectEnabled;
-        _animatedView.animatedColor = option.animatedColor;
-        _animatedView.tranferRate = option.tranferRate;
+        [self _configureAnimatedView:option];
     }
     _scrollView.contentInset = option.contentInset;
     
     /// Reset menu item with new option.
     if (!_menuItems || !_menuItems.count) return;
     for (MTYMenuItem *item in _menuItems) {
-        item.titleFont = option.titleFont;
-        item.titleColor = option.titleColor;
-        item.tranferRate = option.tranferRate;
-        item.selectedTitleFont = option.selectedTitleFont;
-        item.selectedTitleColor = option.selectedTitleColor;
+        [self _configureItem:item with:option];
         item.progress = item.progress;
     }
     /// Mark need re-layout until next event loop.
