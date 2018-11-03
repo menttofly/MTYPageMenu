@@ -1,5 +1,5 @@
 # MTYPageMenu
-Managing pages like ByteDance's TouTiao App.
+Managing pages similar to Toutiao.
 
 ### Installation
 #### CocoaPods
