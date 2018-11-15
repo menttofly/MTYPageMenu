@@ -1,5 +1,5 @@
 # MTYPageMenu
-Managing pages similar to Toutiao.
+An easy way to manage multiple pages
 
 ### Installation
 #### CocoaPods
