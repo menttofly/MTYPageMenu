@@ -146,25 +146,33 @@
     if (!_menuItems || !_menuItems.count) return;
     
     NSMutableArray<NSValue *> *itemFrames = [NSMutableArray array];
-    CGFloat totalWidth = _option.itemMargin;
+    __block CGFloat totalWidth = _option.leading;
 
+    /// Maybe selected font is smaller than normal font.
+    CGFloat titleSize = _option.titleFont.pointSize;
+    CGFloat selectedTitleSize =_option.selectedTitleFont.pointSize;
+    UIFont *font = titleSize < selectedTitleSize ? _option.selectedTitleFont : _option.titleFont;
+    
     /// Calculate the total width of items.
-    for (NSString *title in _menuTitles) {
-        
-        CGFloat itemWidth = _option.itemWidth;
-        if (_option.adaptiveWidth) {
-            /// Maybe selected font is smaller than normal font.
-            UIFont *font = _option.titleFont <= _option.selectedTitleFont ? _option.selectedTitleFont : _option.titleFont;
+    [_menuTitles enumerateObjectsUsingBlock:^(__kindof NSString * _Nonnull title, NSUInteger idx, BOOL * _Nonnull stop) {
+        CGFloat itemWidth = self.option.itemWidth;
+        if (self.option.adaptiveWidth) {
             NSStringDrawingOptions drawOption = NSStringDrawingUsesLineFragmentOrigin | NSStringDrawingUsesFontLeading;
             NSDictionary<NSAttributedStringKey, id> *attributes = @{NSFontAttributeName:font};
             itemWidth = [title boundingRectWithSize:CGSizeMake(MAXFLOAT, MAXFLOAT) options:drawOption attributes:attributes context:nil].size.width;
             itemWidth = ceil(itemWidth);
-            itemWidth += _option.extraWidth;
+            itemWidth += self.option.extraWidth;
         }
         CGRect itemFrame = CGRectMake(totalWidth, 0, itemWidth, self.mty_height);
         [itemFrames addObject:[NSValue valueWithCGRect:itemFrame]];
-        totalWidth += (itemWidth + _option.itemMargin);
-    }
+        if (idx != self.menuItems.count - 1) {
+            totalWidth += (itemWidth + self.option.itemMargin);
+        } else {
+            totalWidth += itemWidth;
+        }
+    }];
+    totalWidth += _option.trailing;
+    
     /// If the total width is smaller than the width of the scroll view, make it evenly distributed.
     if (totalWidth < _scrollView.mty_width) {
         CGFloat gap = _scrollView.mty_width - totalWidth;

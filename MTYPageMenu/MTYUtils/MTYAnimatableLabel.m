@@ -14,9 +14,6 @@
  */
 @interface MTYTextLayer: CATextLayer
 
-/// Indicate whether layer's text is attrabuted text or not.
-@property (nonatomic) BOOL isAttributedText;
-
 @end
 
 @implementation MTYTextLayer
@@ -25,16 +22,9 @@
     
     CGFloat height = self.bounds.size.height;
     CGFloat width = self.bounds.size.width;
-    UIFont *font = (__bridge UIFont *)self.font;
-    CGSize size = CGSizeZero;
-    /// According to the CATextLayer string type, measuring text size.
-    if (self.isAttributedText) {
-        size = [self.string boundingRectWithSize:CGSizeMake(width, INFINITY) options:kNilOptions context:nil].size;
-    } else {
-        size = [self.string sizeWithAttributes:@{NSFontAttributeName:font}];
-    }
-    CGFloat y = (height - size.height) / 2.f;  /// Do not ceil size.
-    
+    CGSize size = [self.string boundingRectWithSize:CGSizeMake(width, INFINITY) options:kNilOptions context:nil].size;
+    CGFloat y =  (height - size.height) / 2.f;  /// Do not ceil size.
+
     CGContextSaveGState(ctx);
     CGContextTranslateCTM(ctx, 0, y);
     [super drawInContext:ctx];
@@ -45,51 +35,31 @@
 
 
 /**
- If you want CATextLayer be animatable, you shouldn't use it as root layer.
+ !!!: Must use attribute text instead of text, because text displayed in CATextLayer has diffrent kerning from UILabel's
  */
 @interface MTYAnimatableLabel ()
 
-///< The CATextLayer used to form the animation.
-@property (nonatomic, strong, readonly) MTYTextLayer *textLayer;
+///< The CATextLayer to excute the animation.
+@property (nonatomic, strong) MTYTextLayer *textLayer;
 
 @end
 
 @implementation MTYAnimatableLabel
 
-#pragma mark - Private
+#pragma mark - Override
 
 - (instancetype)initWithFrame:(CGRect)frame {
     if (self = [super initWithFrame:frame]) {
-        [self _defaults];
+        [self setup];
     }
     return self;
 }
 
 - (instancetype)initWithCoder:(NSCoder *)aDecoder {
     if (self = [super initWithCoder:aDecoder]) {
-        [self _defaults];
+        [self setup];
     }
     return self;
-}
-
-- (void)_defaults {
-    _textLayer = [[MTYTextLayer alloc] init];
-    _textLayer.rasterizationScale = UIScreen.mainScreen.scale;
-    _textLayer.contentsScale = UIScreen.mainScreen.scale;
-    [self.layer addSublayer:_textLayer];
-  
-    /// Restore setting from xib UILabel.
-    self.text = super.text;
-    self.font = self.font;
-    self.textColor = self.textColor;
-    self.shadowColor = self.shadowColor;
-    self.shadowOffset = self.shadowOffset;
-    self.textAlignment = self.textAlignment;
-    self.adjustsFontSizeToFitWidth = self.adjustsFontSizeToFitWidth;
-    
-    /// Clear UILabel text.
-    [super setText:nil];
-    [super setAttributedText:nil];
 }
 
 - (void)layoutSubviews {
@@ -99,38 +69,70 @@
     }
 }
 
-#pragma mark - UILabel Part of Attributes
+#pragma mark - Private
+
+- (void)setup {
+    _textLayer = [[MTYTextLayer alloc] init];
+    _textLayer.rasterizationScale = UIScreen.mainScreen.scale;
+    _textLayer.contentsScale = UIScreen.mainScreen.scale;
+    [self.layer addSublayer:_textLayer];
+    
+    /// Restore setting from xib UILabel.
+    self.text = super.text;
+    self.font = self.font;
+    self.textColor = self.textColor;
+    self.textAlignment = self.textAlignment;
+    
+    /// Clear UILabel text.
+    [super setText:nil];
+    [super setAttributedText:nil];
+}
 
 /**
- Sicen we use CATransaction to explicitly modify the layer tree, so no need to call setNeedsDisplay.
+ Because we use CATransaction to explicitly modify the layer tree, so no need to call setNeedsDisplay.
  */
+- (void)addAttributesForTextLayer:(NSDictionary *)attributes {
+    
+    NSMutableAttributedString *attributedText = [_textLayer.string mutableCopy];
+    [attributedText addAttributes:attributes range:NSMakeRange(0, attributedText.length)];
+    _textLayer.string = attributedText;
+}
+
+#pragma mark - UILabel Part of Attributes
+
 - (void)setText:(NSString *)text {
-    _textLayer.string = text;
+    if (!text) {
+        _textLayer.string = nil;
+    } else {
+        NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] initWithString:text];
+        /// Property font & textColor are both 'null_resettable'
+        NSDictionary *attributes = @{NSFontAttributeName:self.font, NSForegroundColorAttributeName:self.textColor};
+        [attributedText addAttributes:attributes range:NSMakeRange(0, attributedText.length)];
+        _textLayer.string = attributedText;
+    }
+}
+
+- (nullable NSString *)text {
+    NSAttributedString *attributedText = _textLayer.string;
+    return attributedText.string;
 }
 
 - (void)setFont:(UIFont *)font {
     super.font = font;
-    
-    CFStringRef fontName = (__bridge CFStringRef)font.fontName;
-    CTFontRef fontRef = CTFontCreateWithName(fontName, font.pointSize, NULL);
-    _textLayer.font = fontRef;
-    _textLayer.fontSize = font.pointSize;
-    CFRelease(fontRef);
+    if (!font) return;
+    [self addAttributesForTextLayer:@{NSFontAttributeName:font}];
 }
 
 - (void)setTextColor:(UIColor *)textColor {
     super.textColor = textColor;
-    _textLayer.foregroundColor = textColor.CGColor;
+    if (!textColor) return;
+    [self addAttributesForTextLayer:@{NSForegroundColorAttributeName:textColor}];
 }
 
-- (void)setShadowColor:(UIColor *)shadowColor {
-    super.shadowColor = shadowColor;
-    _textLayer.shadowColor = shadowColor.CGColor;
-}
-
-- (void)setShadowOffset:(CGSize)shadowOffset {
-    super.shadowOffset = shadowOffset;
-    _textLayer.shadowOffset = shadowOffset;
+- (void)setTextShadow:(NSShadow *)textShadow {
+    _textShadow = textShadow;
+    if (!textShadow) return;
+    [self addAttributesForTextLayer:@{NSShadowAttributeName:textShadow}];
 }
 
 - (void)setTextAlignment:(NSTextAlignment)textAlignment {
@@ -155,21 +157,11 @@
 }
 
 - (void)setAttributedText:(NSAttributedString *)attributedText {
-    _textLayer.isAttributedText = attributedText && [attributedText isKindOfClass:NSAttributedString.class];
     _textLayer.string = attributedText;
 }
 
-- (void)setAdjustsFontSizeToFitWidth:(BOOL)adjustsFontSizeToFitWidth {
-    super.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth;
-    _textLayer.wrapped = adjustsFontSizeToFitWidth;
-}
-
-- (NSAttributedString *)attributedText {
-    return _textLayer.isAttributedText ? _textLayer.string : nil;
-}
-
-- (NSString *)text {
-    return !_textLayer.isAttributedText ? _textLayer.string : nil;
+- (nullable NSAttributedString *)attributedText {
+    return _textLayer.string;
 }
 
 @end

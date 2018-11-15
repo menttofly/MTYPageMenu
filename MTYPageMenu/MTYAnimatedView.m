@@ -160,13 +160,14 @@
 
     if (_trackImage) {
         [CATransaction begin];
+        [CATransaction setAnimationDuration:self.tranferRate / 60.f];
         [CATransaction setAnimationTimingFunction:[CAMediaTimingFunction functionWithName:_timingFunction]];
         _shapeLayer.frame = toPath.bounds;
         [CATransaction commit];
     } else {
         CAKeyframeAnimation *pathAnimation = self.pathAnimation;
         /// Determine the appropriate path to animate.
-        if (labs(index-_index) > 1 || !_springEffectEnabled) {
+        if (labs(index - _index) > 1 || !_springEffectEnabled) {
             pathAnimation.values = @[(__bridge id)_shapeLayer.path, (__bridge id)toPath.CGPath];
         } else {
             NSInteger start = index < _index ? index : _index;

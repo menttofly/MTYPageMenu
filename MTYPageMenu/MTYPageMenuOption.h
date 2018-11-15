@@ -36,6 +36,8 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic) UIImage *trackImage;  ///< Animated image of the track view, this will cover 'trackColor' and other attribute.
 @property (nullable, nonatomic, copy) NSString *contentsGravity;  ///< Content mode for track image view, default is 'kCAGravityResize'.
 
+@property (nonatomic) CGFloat leading;  /// Leading margin before first item.
+@property (nonatomic) CGFloat trailing;  /// Trailing margin after last item.
 @property (nonatomic) CGFloat itemWidth;  ///< Menu item width.
 @property (nonatomic) CGFloat itemMargin;  ///< Margin between menu item.
 @property (nonatomic) CGFloat extraWidth;  ///< Extra item width when use automatic calculate item width.

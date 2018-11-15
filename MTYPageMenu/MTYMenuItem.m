@@ -97,7 +97,11 @@ static inline BOOL isEqual(CGFloat a, CGFloat b) {
     CGFloat green = _nGreen + (_sGreen - _nGreen) * progress;
     CGFloat blue = _nBlue + (_sBlue - _nBlue) * progress;
     CGFloat alpha = _nAlpha + (_sAlpha - _nAlpha) * progress;
+    
+    [CATransaction begin];
+    [CATransaction setDisableActions:YES];
     self.textColor = [UIColor colorWithRed:red green:green blue:blue alpha:alpha];
+    [CATransaction commit];
     
     /// Alter the font of UILabel has poor effect, however CATextLayer which base on CoreText kit has excellent result.
     CGFloat titleSize = _titleFont.pointSize;
@@ -118,7 +122,8 @@ static inline BOOL isEqual(CGFloat a, CGFloat b) {
         } else if (isEqual(progress, 1)) {
             self.font = _selectedTitleFont;
         } else {
-            self.font = [UIFont fontWithName:_titleFont.fontName size:selectedTitleSize * scale];
+            /// !!!: Returns a font matching the '_titleFont' descriptor.
+            self.font = [UIFont fontWithDescriptor:_titleFont.fontDescriptor size:selectedTitleSize * scale];
         }
         [CATransaction commit];
     }

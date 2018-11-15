@@ -40,7 +40,11 @@
         [self selectPageAtIndex:0];
     });
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(3 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        self.menuOption.extraWidth = 30;
+        self.menuOption.animatedHeight = 3;
+        self.menuOption.trackCornerRadius = 1.5;
+        self.menuOption.leading = 10;
+        self.menuOption.trailing = 10;
+        self.menuOption.extraWidth = 0;
         self.menuOption.trackImage = nil;
         self.menuOption.trackColor = UIColor.orangeColor;
         [self resetOption:self.menuOption];

@@ -13,4 +13,6 @@
  */
 @interface MTYAnimatableLabel : UILabel
 
+@property (nonatomic) NSShadow *textShadow;  ///< Showdow for text.
+
 @end
