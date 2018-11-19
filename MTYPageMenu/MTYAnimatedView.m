@@ -151,6 +151,8 @@
 #pragma mark - Public
 
 - (void)animatedWithIndex:(NSInteger)index {
+    if (!_keyFrames || !_keyFrames.count) return;
+    if (index < 0 || index > _keyFrames.count - 1) return;
     
     /// Final destination path.
     CGRect nextFrame = _keyFrames[index].CGRectValue;
