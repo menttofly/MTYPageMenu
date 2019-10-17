@@ -254,8 +254,8 @@
     [self _removeAllItems];
     /// Re-add menu items.
     [self _setupNewItems];
-    /// Mark need re-layout immediately.
-    [self layoutIfNeeded];
+    /// Mark need re-layout until next event loop.
+    [self setNeedsLayout];
 }
 
 #pragma mark - MTYMenuItemDelegate
