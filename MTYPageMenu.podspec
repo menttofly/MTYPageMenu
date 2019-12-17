@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = 'MTYPageMenu'
   s.summary      = 'Managing pages like ByteDance TouTiao App.'
-  s.version      = '1.1'
+  s.version      = '1.2'
   s.license      = { :type => 'MIT', :file => 'LICENSE' }
   s.authors      = { 'menttofly' => '1028365614@qq.com' }
   s.homepage     = 'https://github.com/menttofly/MTYPageMenu'

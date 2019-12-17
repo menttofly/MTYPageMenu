@@ -27,6 +27,7 @@ struct DelegateFlags {
 @property (nonatomic) NSMutableDictionary<NSNumber *, UIViewController *> *childPages;
 @property (nonatomic, readwrite) UIViewController *currentPage;
 @property (nonatomic, readwrite) NSInteger currentIndex;
+@property (nonatomic, readwrite) CGFloat contentOffset;
 @property (nonatomic) CGFloat previousOffset;
 @property (nonatomic) NSInteger intendIndex;
 
@@ -350,7 +351,7 @@ static const CGFloat MTYMenuViewHeight = 45;
         if (_willDisappear || !_beyondRange) [self _startCompleteAppearanceTransition];
     } else {
         NSInteger previousIndex = self.currentIndex;
-        _currentIndex = newIndex;
+        self.currentIndex = newIndex;
         /// End appearance forwarding for previous page.
         [self _removePageAtIndex:previousIndex];
         UIViewController *previousPage = _childPages[@(previousIndex)];
@@ -380,7 +381,7 @@ static const CGFloat MTYMenuViewHeight = 45;
     
     /// Add new page.
     [self _addPageAtIndex:_intendIndex];
-    _currentIndex = _intendIndex;
+    self.currentIndex = _intendIndex;
     _currentPage = _childPages[@(_intendIndex)];
     [self _startCompleteAppearanceTransition];
     [_contentView setContentOffset:CGPointMake(_contentView.mty_width * _intendIndex, 0) animated:NO];
@@ -411,7 +412,7 @@ static const CGFloat MTYMenuViewHeight = 45;
         _startIndex = _pageCount - 1;
     }
     [self _addPageAtIndex:_startIndex];
-    _currentIndex = self.startIndex;
+    self.currentIndex = self.startIndex;
     _currentPage = self.childPages[@(_currentIndex)];
     
     /// Mark need re-layout until next runloop, otherwise some process in viewDidLayoutSubviews won't be done.
@@ -467,6 +468,7 @@ static const CGFloat MTYMenuViewHeight = 45;
     if (self.didTapMenuView) return;
     
     CGFloat offset = scrollView.contentOffset.x;
+    self.contentOffset = offset;
     NSInteger pItendIndex = _intendIndex;
 
     /// Update intend index according to scroll direction.

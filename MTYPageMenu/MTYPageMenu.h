@@ -60,6 +60,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, readonly) NSDictionary<NSNumber *, __kindof UIViewController *> *managedPages;
 @property (nullable, nonatomic, readonly) UIViewController *currentPage;
 @property (nonatomic, readonly) NSInteger currentIndex;
+@property (nonatomic, readonly) CGFloat contentOffset;
 @property (nonatomic) NSInteger startIndex;
 
 /**
